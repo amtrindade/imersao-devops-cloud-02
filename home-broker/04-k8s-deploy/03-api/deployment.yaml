@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: trader-api
-          image: fabricioveronez/trader-api:v1
+          image: amtrindade/trader-api:v1
           ports:
           - containerPort: 3000
           env:
@@ -70,8 +70,8 @@ spec:
   ports:
   - port: 80
     targetPort: 3000
-    # nodePort: 30000
-  #type: NodePort
-  type: LoadBalancer
+    nodePort: 30000
+  type: NodePort
+  #type: LoadBalancer
 
 
