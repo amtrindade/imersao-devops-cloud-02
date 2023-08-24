@@ -7,3 +7,9 @@
 
 ### Aplica deployment recursivo:
 ```kubectl apply -f . -R``` 
+
+### Acessar a app:
+http://localhost:3001/wallet1
+http://localhost:3001/wallet2
+
+
