@@ -23,8 +23,8 @@ jobs:
           file: ./home-broker/01-worker/Dockerfile
           push: true
           tags: |
-            fabricioveronez/trader-worker:${{github.run_number}}
-            fabricioveronez/trader-worker:latest
+            amtrindade/trader-worker:${{github.run_number}}
+            amtrindade/trader-worker:latest
       - name: Construindo a imagem do api
         uses: docker/build-push-action@v4.1.1
         with:
@@ -32,8 +32,8 @@ jobs:
           file: ./home-broker/02-api/Dockerfile
           push: true
           tags: |
-            fabricioveronez/trader-api:${{github.run_number}}
-            fabricioveronez/trader-api:latest
+            amtrindade/trader-api:${{github.run_number}}
+            amtrindade/trader-api:latest
       - name: Construindo a imagem do frontend
         uses: docker/build-push-action@v4.1.1
         with:
@@ -41,8 +41,8 @@ jobs:
           file: ./home-broker/03-frontend/Dockerfile
           push: true
           tags: |
-            fabricioveronez/trader-web:${{github.run_number}}
-            fabricioveronez/trader-web:latest
+            amtrindade/trader-web:${{github.run_number}}
+            amtrindade/trader-web:latest
           build-args: |
             next_url=a926f72ab200a45d3b0c784566538857-290598195.us-east-1.elb.amazonaws.com
             next_url_api=afe16f14318614b4ba8c02f07f89c68c-843941589.us-east-1.elb.amazonaws.com
@@ -69,7 +69,7 @@ jobs:
           manifests: |
             home-broker/04-k8s-deploy/02-worker/deployment.yaml
           images: |
-            fabricioveronez/trader-worker:${{github.run_number}}
+            amtrindade/trader-worker:${{github.run_number}}
             
       - name: Deploy da api no cluster Kubernetes
         uses: Azure/k8s-deploy@v4.9
@@ -77,7 +77,7 @@ jobs:
           manifests: |
             home-broker/04-k8s-deploy/03-api/deployment.yaml
           images: |
-            fabricioveronez/trader-api:${{github.run_number}}
+            amtrindade/trader-api:${{github.run_number}}
 
       - name: Deploy do frontend no cluster Kubernetes
         uses: Azure/k8s-deploy@v4.9
@@ -85,4 +85,4 @@ jobs:
           manifests: |
             home-broker/04-k8s-deploy/04-frontend/deployment.yaml
           images: |
-            fabricioveronez/trader-web:${{github.run_number}}
+            amtrindade/trader-web:${{github.run_number}}
